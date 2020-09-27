@@ -1,6 +1,6 @@
 #include <iostream>
 
-#define T cout << " Test " << endl;
+#define T cout << "Test" << endl;
 #define COUNT 10
 
 using namespace std;
