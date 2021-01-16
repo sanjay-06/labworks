@@ -1,0 +1,222 @@
+
+
+            Program works on python basics
+
+1. Write a program which will find all such numbers which are divisible by 7 but are not a multiple of 5, between 2000 and 3200 (both included). The numbers obtained should be
+printed in a comma-separated sequence on a single line.
+
+
+list=[]
+for i in range(2000,3201):
+    if (i%7 == 0) and not (i%5 == 0):
+       list.append(str(i))
+print(",".join(list))
+
+
+
+
+2. ["www.zframez.com", "www.wikipedia.org", "www.asp.net", "www.abcd.in"]
+Write a python program to print website suffixes (com, org, net, in) from this list. Input the
+list, don’t initialize.
+
+import re
+list=[]
+suffix=[]
+print("Press ctrl-c to terminate while loop")
+try:
+   while True:
+      string=input("Enter the website address: ")
+      list.append(string)
+except KeyboardInterrupt:
+    print("\n")
+    pass
+
+print("The suffix of the websites are: ")
+for web in list:
+    ext=web.split(".")[-1:]
+    print("".join(ext))
+
+
+3. Write a program that computes the value of a+aa+aaa+aaaa with a given digit as the value of
+a.
+Suppose the following input is supplied to the program:
+9
+Then the output should be:
+11106
+
+
+str=input("Enter the number: ")
+n1=str
+n2=str*2
+n3=str*3
+n4=str*4
+value=int(n1)+int(n2)+int(n3)+int(n4)
+print("The value is {}".format(value))
+
+
+4. Read a given string, change the character at a given index and then print the modified string.
+Input Format
+The first line contains a string, S.
+The next line contains an integer i, denoting the index location and a character separated by a
+space.
+Sample Input
+abracadabra
+5 k
+Sample Output
+abrackdabra
+
+
+def splitstr(string):
+    return [letter for letter in string]
+
+string=input("Enter the string: ")
+list=[]
+list=splitstr(string)
+print("Enter the index position and letter(leave space between them and dont press enter)")
+index,letter=input().split()
+list[int(index)]=letter
+print("The replaced word is given by {}".format("".join(list)))
+
+
+5. Write a function that tests if a number is prime. Test it by writing out all prime numbers less
+than 50.
+
+def isprime(n):
+   if(n<1):
+     return "not prime"
+   for i in range(2,n):
+      if(n%i==0):
+        return "not prime"
+   return "prime"
+
+dict={}
+lower=input("Enter the lowerbase index: ")
+for i in range(lower,50):
+    dict[i]=isprime(i)
+
+print(dict)
+
+6. With a given integral number n, write a program to generate a dictionary that contains (i, i*i)
+such that is an integral number between 1 and n (both included). and then the program should
+print the dictionary.
+Suppose the following input is supplied to the program:
+8
+Then, the output should be:
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64}
+
+dict={}
+high=int(input("Enter the number: "))
+for i in range(1,high+1):
+    dict[i]=i*i
+
+print("The dictionary is: ")
+print(dict)
+
+
+7. Determine if a sentence is a pangram.
+Example of pangram: The quick brown fox jumps over the lazy dog
+
+def checkpan(string):
+    str="abcdefghijklmnopqrstuvwxyz"
+    for char in str:
+        if char not in string.lower():
+            return False
+    return True
+
+string=input("Enter the sentence :")
+if(checkpan(string.strip())==True):
+  print("Yes it is pangram")
+else:
+  print("No it is not pangram")
+
+
+8. Implement run-length encoding and decoding.
+A hypothetical scan line, with B representing a black pixel and W representing white, might
+read as follows:
+WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWW
+WWWWWWWWWWBWWWWWWWWWWWWWW
+With a run-length encoding (RLE) data compression algorithm applied to the above
+hypothetical scan line; it can be rendered as follows:
+12W1B12W3B24W1B14W
+
+string="WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
+encoding=""
+count=0
+i=0
+
+while i < len(string):
+    count=1
+    while i+1<len(string) and string[i]==string[i+1]:
+         count+=1
+         i+=1
+    encoding+=str(count)+string[i]
+    i+=1
+print(encoding)
+
+
+9. Calculate the centered average of an array of integers.
+
+def center_average(num):
+    return (sum(num)-max(num)- min(num))/(len(num)-2)
+
+array=[]
+n=int(input("Enter the size of the array: "))
+print("Enter the array ")
+for i  in range(0,int(n)):
+    array.append(int(input()))
+print(array)
+value=(sum(array)-max(array)- min(array))/(len(array)-2)
+print("The centered average of the array {} is {}".format(array,int(value)))
+
+
+10. Given an array of ints, return True if the array contains a 2 next to a 2 somewhere.
+has22([1, 2, 2]) → True
+has22([1, 2, 1, 2]) → False
+has22([2, 1, 2]) → False
+
+def has22(array):
+    for i in range(len(array)):
+        if((array[i] == 2 ) and (array[i+1] ==2)):
+          return True
+    else:
+        return False
+
+array=[]
+n=int(input("Enter the size of the array: "))
+print("Enter the array ")
+for i  in range(0,int(n)):
+    array.append(int(input()))
+
+if(has22(array)):
+   print("Yes adjacent 2s")
+else:
+   print("No adjacent 2s")
+
+
+
+11. Consider an n-digit number. Square it and add the right n digits to the left n or n-1 digits. If
+the resultant sum is equal to the original number, then it is a Keprekar number. 9 satisfies this
+property, since 9 2 =81 and 8+1=9 itself. Similarly 297 2 =88209 and 88+297=297. Write a
+Python program to check whether a number is Keprekar or not.
+ 
+def checkkep(number):
+    sq_numb=number**2
+    string=str(sq_numb)
+    list=[]
+    for num in string:
+        list.append(str(num))
+        list1 ="".join(list[:len(list)//2])
+        list2 ="".join(list[len(list)//2:])
+    sum=int(list1)+int(list2)
+    if(number==sum):
+      return True
+    else:
+      return False
+
+
+num=input("Enter the number: ")
+if(checkkep(int(num))):
+    print("Yes it is keprekar")
+else:
+    print("No it is not a keprekar")
+
