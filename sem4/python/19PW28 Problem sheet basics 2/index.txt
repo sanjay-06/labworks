@@ -1,3 +1,0 @@
-SimpleText is the native text editor for the Apple classic Mac OS
-It allows text editing and text formatting
-This was developed to integrate the features included
